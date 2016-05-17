@@ -1,8 +1,4 @@
 
-_scmpuff_installed() {
-    hash scmpuff >/dev/null 2>&1
-}
-
-if _scmpuff_installed; then
+if (($+commands[scmpuff])); then
     eval "$(scmpuff init - )"
 fi

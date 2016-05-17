@@ -29,7 +29,7 @@ zplug "plugins/gnu-utils", from:oh-my-zsh, as:plugin, nice:9, hook-load:"__gnu_u
 
 zplug "sindresorhus/pure", nice:16
 
-zplug "arbelt/dotzsh", use:'aliases.zsh', nice:16
+zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, nice:16
 zplug "arbelt/dotzsh", use:'plugins/*.zsh', as:plugin, nice:16
 
 # Syntax highlighting likes to be loaded last
