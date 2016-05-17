@@ -16,6 +16,7 @@ _pyenv_virtualenv_installed() {
 }
 
 _pyenv_callback() {
+    (( ${#@[@]} )) || return 0
     eval "$@"
 
     function pyenv_prompt_info() {
@@ -39,7 +40,6 @@ _find_pyenv() {
         echo "$(pyenv init --no-rehash - zsh)"
     fi
 }
-
 
 async_start_worker pyenv_worker -u -n
 async_register_callback pyenv_worker _pyenv_callback
