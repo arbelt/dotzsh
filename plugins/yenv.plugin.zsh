@@ -32,15 +32,41 @@ _find_pyenv() {
     export PYENV_ROOT=$pyenvdir
     [[ -d "${PYENV_ROOT}"/bin ]] && export PATH="${PYENV_ROOT}":$PATH
     if _pyenv_virtualenv_installed; then
-        echo "PYENV_ROOT=${PYENV_ROOT}"
-        echo "$(pyenv init --no-rehash - zsh)"
+        echo "$(pyenv init - zsh)"
         function pyenv_prompt_info() {
             echo "$(pyenv version-name)"
         }
     fi
 }
 
-async_start_worker pyenv_worker -u -n
-async_register_callback pyenv_worker _evaluator_callback
-async_job pyenv_worker _find_pyenv
+_find_rbenv() {
+    rbenvdirs=("${HOME}/.rbenv/" "/usr/local/opt/rbenv" "/opt/rbenv")
+
+    rbenvdir=$(_first_existing $rbenvdirs[@])
+
+    if [[ ! -d "$rbenvdir" ]]; then
+        return 0
+    fi
+
+    export RBENV_ROOT=$rbenvdir
+    [[ -d "${RBENV_ROOT}/bin" ]] && export PATH=${RBENV_ROOT}/bin:$PATH
+
+    hash rbenv &>/dev/null || return 0
+
+    echo "$(rbenv init - zsh)"
+
+    function rbenv_prompt_info() {
+        echo "$(rbenv version-name)"
+    }
+}
+
+_find_nodenv() {
+    hash nodenv &>/dev/null && echo "$(nodenv init - zsh)"
+}
+
+async_start_worker yenv_worker -u -n
+async_register_callback yenv_worker _evaluator_callback
+async_job yenv_worker _find_pyenv
+async_job yenv_worker _find_rbenv
+async_job yenv_worker _find_nodenv
 
