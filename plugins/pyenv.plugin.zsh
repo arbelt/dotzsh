@@ -16,7 +16,8 @@ _pyenv_virtualenv_installed() {
 }
 
 _evaluator_callback() {
-    eval "$@"
+    local output="$3"
+    eval "${output}"
 }
 
 _find_pyenv() {
@@ -25,7 +26,7 @@ _find_pyenv() {
     local pyenvdir=$(_first_existing $pyenvdirs[@])
 
     if [[ ! -d "$pyenvdir" ]]; then
-        exit 0
+        return 0
     fi
 
     export PYENV_ROOT=$pyenvdir
