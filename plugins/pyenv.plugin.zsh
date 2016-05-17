@@ -15,7 +15,9 @@ _pyenv_virtualenv_installed() {
     hash pyenv-virtualenv >/dev/null 2>&1
 }
 
-_dummy_callback() {}
+_evaluator_callback() {
+    eval "$@"
+}
 
 _find_pyenv() {
     local pyenvdirs=("${HOME}/.pyenv/" "/usr/local/opt/pyenv" "/opt/pyenv")
@@ -30,7 +32,8 @@ _find_pyenv() {
     [[ -d "${PYENV_ROOT}"/bin ]] && export PATH="${PYENV_ROOT}":$PATH
     export PATH=${PYENV_ROOT}/bin:$PATH
     if _pyenv_virtualenv_installed; then
-        eval "$(pyenv init --no-rehash - zsh)"
+        echo "PYENV_ROOT=${PYENV_ROOT}"
+        echo "$(pyenv init --no-rehash - zsh)"
         function pyenv_prompt_info() {
             echo "$(pyenv version-name)"
         }
@@ -38,6 +41,6 @@ _find_pyenv() {
 }
 
 async_start_worker pyenv_worker -u -n
-async_register_callback pyenv_worker _dummy_callback
+async_register_callback pyenv_worker _evaluator_callback
 async_job pyenv_worker _find_pyenv
 
