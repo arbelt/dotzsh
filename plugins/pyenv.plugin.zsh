@@ -1,5 +1,10 @@
 # -*- mode:sh -*-
 
+if ((! ${ASYNC_INIT_DONE})); then
+    async_init
+fi
+
+
 _first_existing() {
     for arg; do
         [[ -e "${arg}" ]] && echo -n "${arg}" && break
@@ -10,25 +15,33 @@ _pyenv_virtualenv_installed() {
     hash pyenv-virtualenv >/dev/null 2>&1
 }
 
-pyenvdirs=("${HOME}/.pyenv/" "/usr/local/opt/pyenv" "/opt/pyenv")
+_pyenv_callback() {
+    eval "$@"
 
-pyenvdir=$(_first_existing $pyenvdirs[@])
-
-if [[ ! -d "$pyenvdir" ]]; then
-    exit 0
-fi
-
-PYENV_ROOT=$pyenvdir
-export PATH=${PYENV_ROOT}/bin:$PATH
-
-eval "$(pyenv init --no-rehash - zsh)"
-
-if _pyenv_virtualenv_installed; then
-    eval "$(pyenv virtualenv-init --no-rehash - zsh)"
-fi
-
-function pyenv_prompt_info() {
-    echo "$(pyenv version-name)"
+    function pyenv_prompt_info() {
+        echo "$(pyenv version-name)"
+    }
 }
 
-unset pyenvdir
+_find_pyenv() {
+    local pyenvdirs=("${HOME}/.pyenv/" "/usr/local/opt/pyenv" "/opt/pyenv")
+
+    local pyenvdir=$(_first_existing $pyenvdirs[@])
+
+    if [[ ! -d "$pyenvdir" ]]; then
+        exit 0
+    fi
+
+    export PYENV_ROOT=$pyenvdir
+    [[ -d "${PYENV_ROOT}"/bin ]] && export PATH="${PYENV_ROOT}":$PATH
+    export PATH=${PYENV_ROOT}/bin:$PATH
+    if _pyenv_virtualenv_installed; then
+        echo "$(pyenv init --no-rehash - zsh)"
+    fi
+}
+
+
+async_start_worker pyenv_worker -u -n
+async_register_callback pyenv_worker _pyenv_callback
+async_job pyenv_worker _find_pyenv
+
