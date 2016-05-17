@@ -31,7 +31,6 @@ _find_pyenv() {
 
     export PYENV_ROOT=$pyenvdir
     [[ -d "${PYENV_ROOT}"/bin ]] && export PATH="${PYENV_ROOT}":$PATH
-    export PATH=${PYENV_ROOT}/bin:$PATH
     if _pyenv_virtualenv_installed; then
         echo "PYENV_ROOT=${PYENV_ROOT}"
         echo "$(pyenv init --no-rehash - zsh)"
