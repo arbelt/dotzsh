@@ -16,10 +16,8 @@ _pyenv_virtualenv_installed() {
     hash pyenv-virtualenv >/dev/null 2>&1
 }
 
-COMPLETED=0
 _evaluator_callback() {
-    COMPLETED=$(( COMPLETED + 1 ))
-    echo ${COMPLETED}
+    [[ $2 -eq 0 ]] || return 0
     local output="$3"
     eval "${output}"
 }
