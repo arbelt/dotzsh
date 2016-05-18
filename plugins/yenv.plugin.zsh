@@ -11,6 +11,8 @@ _first_existing() {
     done
 }
 
+COMPLETED=0
+
 _pyenv_virtualenv_installed() {
     hash pyenv-virtualenv >/dev/null 2>&1
 }
@@ -18,6 +20,7 @@ _pyenv_virtualenv_installed() {
 _evaluator_callback() {
     local output="$3"
     eval "${output}"
+    COMPLETED=$(( COMPLETED + 1 ))
 }
 
 _find_pyenv() {
@@ -73,4 +76,9 @@ async_job yenv_worker _find_pyenv
 async_job yenv_worker _find_rbenv
 async_job yenv_worker _find_nodenv
 
-return 0
+while (( COMPLETED < 3 )); do
+    sleep 0.1
+done
+
+
+
