@@ -1,3 +1,5 @@
+# -*- mode:sh -*-
+
 export ZPLUG_HOME="${HOME}/.zplug"
 source "${ZPLUG_HOME}/init.zsh"
 
@@ -13,7 +15,7 @@ zplug "zplug/zplug"
 zplug "mafredri/zsh-async", nice:10
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:13
 
-# zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
+zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
 zplug "plugins/osx", from:oh-my-zsh, nice:15
 zplug "plugins/fasd", from:oh-my-zsh, nice:15
 zplug "plugins/bundler", from:oh-my-zsh, nice:15
@@ -41,7 +43,10 @@ fi
 
 zplug load
 
-(($+commands[gr])) && unalias gr && . <(gr completion)
+if (($+commands[gr])); then
+    unalias gr
+    . <(gr completion)
+fi
 
 return 0
 
