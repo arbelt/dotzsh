@@ -11,16 +11,17 @@ _first_existing() {
     done
 }
 
-COMPLETED=0
 
 _pyenv_virtualenv_installed() {
     hash pyenv-virtualenv >/dev/null 2>&1
 }
 
+COMPLETED=0
 _evaluator_callback() {
+    COMPLETED=$(( COMPLETED + 1 ))
+    echo ${COMPLETED}
     local output="$3"
     eval "${output}"
-    COMPLETED=$(( COMPLETED + 1 ))
 }
 
 _find_pyenv() {
@@ -38,9 +39,9 @@ _find_pyenv() {
         && echo "export PATH=${PYENV_ROOT}/bin:\${PATH}"
     if _pyenv_virtualenv_installed; then
         echo "$(pyenv init - zsh)"
-        function pyenv_prompt_info() {
-            echo "$(pyenv version-name)"
-        }
+        # function pyenv_prompt_info() {
+        #     echo "$(pyenv version-name)"
+        # }
     fi
 }
 
@@ -61,9 +62,9 @@ _find_rbenv() {
 
     echo "$(rbenv init - zsh)"
 
-    function rbenv_prompt_info() {
-        echo "$(rbenv version-name)"
-    }
+    # function rbenv_prompt_info() {
+    #     echo "$(rbenv version-name)"
+    # }
 }
 
 _find_nodenv() {
@@ -76,9 +77,9 @@ async_job yenv_worker _find_pyenv
 async_job yenv_worker _find_rbenv
 async_job yenv_worker _find_nodenv
 
-while (( COMPLETED < 3 )); do
-    sleep 0.1
-done
+# while (( COMPLETED < 3 )); do
+#     sleep 0.1
+# done
 
 
 
