@@ -69,11 +69,16 @@ _find_nodenv() {
     hash nodenv &>/dev/null && echo "$(nodenv init - zsh)"
 }
 
-async_start_worker yenv_worker -u -n
-async_register_callback yenv_worker _evaluator_callback
-async_job yenv_worker _find_pyenv
-async_job yenv_worker _find_rbenv
-async_job yenv_worker _find_nodenv
+_setup_yenv() {
+    async_start_worker yenv_worker -u -n
+    async_register_callback yenv_worker _evaluator_callback
+    async_job yenv_worker _find_pyenv
+    async_job yenv_worker _find_rbenv
+    async_job yenv_worker _find_nodenv
+}
+
+_setup_yenv "$@"
+
 
 # while (( COMPLETED < 3 )); do
 #     sleep 0.1
