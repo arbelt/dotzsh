@@ -29,8 +29,10 @@ _find_pyenv() {
         return 0
     fi
 
-    export PYENV_ROOT=$pyenvdir
-    [[ -d "${PYENV_ROOT}"/bin ]] && export PATH="${PYENV_ROOT}":$PATH
+    export PYENV_ROOT=$pyenvdir && \
+        echo "export PYENV_ROOT=${PYENV_ROOT}"
+    [[ -d "${PYENV_ROOT}"/bin ]] && PATH="${PYENV_ROOT}":$PATH \
+        && echo "export PATH=${PYENV_ROOT}/bin:\${PATH}"
     if _pyenv_virtualenv_installed; then
         echo "$(pyenv init - zsh)"
         function pyenv_prompt_info() {
@@ -48,7 +50,8 @@ _find_rbenv() {
         return 0
     fi
 
-    export RBENV_ROOT=$rbenvdir
+    export RBENV_ROOT=$rbenvdir \
+        && echo "export RBENV_ROOT=${RBENV_ROOT}"
     [[ -d "${RBENV_ROOT}/bin" ]] && export PATH=${RBENV_ROOT}/bin:$PATH
 
     hash rbenv &>/dev/null || return 0
