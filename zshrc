@@ -43,3 +43,5 @@ zplug load
 
 (($+commands[gr])) && unalias gr && . <(gr completion)
 
+return 0
+
