@@ -13,16 +13,16 @@ zplug "zplug/zplug"
 zplug "mafredri/zsh-async", nice:10
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:13
 
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
+# zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
 zplug "plugins/osx", from:oh-my-zsh, nice:15
 zplug "plugins/fasd", from:oh-my-zsh, nice:15
 zplug "plugins/bundler", from:oh-my-zsh, nice:15
 zplug "plugins/docker-compose", from:oh-my-zsh, nice:15, if:"hash docker-compose"
 zplug "junegunn/fzf", use:"shell/*.zsh", nice:15
-zplug "zsh-users/zsh-completions", as:plugin, nice:15
+# zplug "zsh-users/zsh-completions", as:plugin, nice:15
 
 # Rehash GNU utils as default
-zplug "plugins/gnu-utils", from:oh-my-zsh, as:plugin, nice:9, hook-load:"__gnu_utils"
+# zplug "plugins/gnu-utils", from:oh-my-zsh, as:plugin, nice:9, hook-load:"__gnu_utils"
 
 # zplug "plugins/git-extras", from:oh-my-zsh, if:"(( $+commands[git] ))",nice:15
 # zplug "plugins/git-prompt", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
