@@ -73,3 +73,4 @@ async_job yenv_worker _find_pyenv
 async_job yenv_worker _find_rbenv
 async_job yenv_worker _find_nodenv
 
+return 0
