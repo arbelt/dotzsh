@@ -78,11 +78,3 @@ _setup_yenv() {
 }
 
 _setup_yenv "$@"
-
-
-# while (( COMPLETED < 3 )); do
-#     sleep 0.1
-# done
-
-
-
