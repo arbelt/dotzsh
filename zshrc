@@ -42,6 +42,9 @@ zplug "arbelt/dotzsh", use:'plugins/*.zsh', as:plugin, nice:12
 zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, nice:19
 # zplug "~/.dotfiles/zsh/aliases.zsh", from:local, nice:19
 
+zplug "simonwhitaker/gibo", use:'gibo-completion.zsh', as:plugin, \
+    if:"(( $+commands[gibo] ))", nice:11
+
 # Syntax highlighting likes to be loaded last
 #
 zplug "zsh-users/zsh-syntax-highlighting", nice:17
