@@ -15,7 +15,8 @@ if [[ -z "$ZSH_CACHE_DIR" ]]; then
   export ZSH_CACHE_DIR="$ZSH/cache"
 fi
 
-zplug "zplug/zplug", at:"2.1.0"
+# zplug "zplug/zplug", at:"2.1.0"
+zplug "zplug/zplug"
 zplug "mafredri/zsh-async", nice:11
 
 # zplug "robbyrussell/oh-my-zsh", use:"oh-my-zsh.zsh", nice:-10
