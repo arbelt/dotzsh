@@ -16,20 +16,22 @@ if [[ -z "$ZSH_CACHE_DIR" ]]; then
 fi
 
 # zplug "zplug/zplug", at:"2.1.0"
-zplug "zplug/zplug", at:"2.3.3"
-zplug "mafredri/zsh-async", at:"1.3.1", nice:11
+# zplug "zplug/zplug", at:"master"
+# zplug "zplug/zplug"
+zplug "mafredri/zsh-async", at:v1.3.1, as:plugin, defer:2, \
+    frozen:1
 
-# zplug "robbyrussell/oh-my-zsh", use:"oh-my-zsh.zsh", nice:-10
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", nice:14, ignore:"oh-my-zsh.zsh"
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
-zplug "plugins/osx", from:oh-my-zsh, nice:15
-zplug "plugins/fasd", from:oh-my-zsh, nice:15, \
+# zplug "robbyrussell/oh-my-zsh", use:"oh-my-zsh.zsh", defer:2
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:2, ignore:"oh-my-zsh.zsh"
+zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", defer:2
+zplug "plugins/osx", from:oh-my-zsh, defer:2
+zplug "plugins/fasd", from:oh-my-zsh, defer:2, \
     if:"(( $+commands[fasd] ))"
-zplug "plugins/bundler", from:oh-my-zsh, nice:15
-zplug "plugins/docker-compose", from:oh-my-zsh, nice:15, \
+zplug "plugins/bundler", from:oh-my-zsh, defer:2
+zplug "plugins/docker-compose", from:oh-my-zsh, defer:2, \
     if:"(( $+commands[docker-compose] ))"
-zplug "junegunn/fzf", use:"shell/*.zsh", nice:15, if:"(( $+commands[fzf] ))"
-# zplug "zsh-users/zsh-completions", as:plugin, nice:15
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:2, if:"(( $+commands[fzf] ))"
+# zplug "zsh-users/zsh-completions", as:plugin, defer:2
 
 # Rehash GNU utils as default
 # zplug "plugins/gnu-utils", from:oh-my-zsh, as:plugin, nice:9, hook-load:"__gnu_utils"
@@ -37,18 +39,18 @@ zplug "junegunn/fzf", use:"shell/*.zsh", nice:15, if:"(( $+commands[fzf] ))"
 # zplug "plugins/git-extras", from:oh-my-zsh, if:"(( $+commands[git] ))",nice:15
 # zplug "plugins/git-prompt", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
 
-zplug "sindresorhus/pure", nice:16
+zplug "sindresorhus/pure", defer:3
 
-zplug "arbelt/dotzsh", use:'plugins/*.zsh', as:plugin, nice:12
-zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, nice:19
+zplug "arbelt/dotzsh", use:'plugins/*.zsh', as:plugin, defer:3
+zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, defer:3
 # zplug "~/.dotfiles/zsh/aliases.zsh", from:local, nice:19
 
 zplug "simonwhitaker/gibo", use:'gibo-completion.zsh', as:plugin, \
-    if:"(( $+commands[gibo] ))", nice:11
+    if:"(( $+commands[gibo] ))", defer:2
 
 # Syntax highlighting likes to be loaded last
 #
-zplug "zsh-users/zsh-syntax-highlighting", nice:17
+zplug "zsh-users/zsh-syntax-highlighting", defer:3
 
 if ! zplug check; then
     zplug install
