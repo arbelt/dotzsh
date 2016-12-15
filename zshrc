@@ -30,7 +30,7 @@ zplug "plugins/fasd", from:oh-my-zsh, defer:2, \
 zplug "plugins/bundler", from:oh-my-zsh, defer:2
 zplug "plugins/docker-compose", from:oh-my-zsh, defer:2, \
     if:"(( $+commands[docker-compose] ))"
-zplug "junegunn/fzf", use:"shell/*.zsh", defer:2, if:"(( $+commands[fzf] ))"
+zplug "junegunn/fzf", use:"shell/*.zsh", defer:3, if:"(( $+commands[fzf] ))", as:plugin, lazy:false
 # zplug "zsh-users/zsh-completions", as:plugin, defer:2
 
 # Rehash GNU utils as default
@@ -44,6 +44,7 @@ zplug "sindresorhus/pure", defer:3
 zplug "arbelt/dotzsh", use:'plugins/*.zsh', as:plugin, defer:3
 zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, defer:3
 # zplug "~/.dotfiles/zsh/aliases.zsh", from:local, nice:19
+# zplug "~/.fzf.zsh", from:local, defer:3, if:"[ -s ~/.fzf.zsh ]", lazy:false
 
 zplug "simonwhitaker/gibo", use:'gibo-completion.zsh', as:plugin, \
     if:"(( $+commands[gibo] ))", defer:2
