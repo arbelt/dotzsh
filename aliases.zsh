@@ -7,8 +7,8 @@ fi
 
 if (($+commands[exa])); then
     alias ls='exa'
-    alias l='exa -l'
-    alias la='exa -la'
+    alias l='exa -lg'
+    alias la='exa -lga'
 elif [[ "$(which ls)" = $commands[gls] ]]; then
     alias ls='ls -G --color=auto'
 fi
