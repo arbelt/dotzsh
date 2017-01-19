@@ -30,6 +30,7 @@ zplug "plugins/fasd", from:oh-my-zsh, defer:2, \
 zplug "plugins/bundler", from:oh-my-zsh, defer:2
 zplug "plugins/docker-compose", from:oh-my-zsh, defer:2, \
     if:"(( $+commands[docker-compose] ))"
+zplug "plugins/gitignore", from:oh-my-zsh, defer:2
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:3, if:"(( $+commands[fzf] ))", as:plugin, lazy:false
 # zplug "zsh-users/zsh-completions", as:plugin, defer:2
 
