@@ -34,6 +34,9 @@ zplug "plugins/gitignore", from:oh-my-zsh, defer:2
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:3, if:"(( $+commands[fzf] ))", as:plugin, lazy:false
 # zplug "zsh-users/zsh-completions", as:plugin, defer:2
 
+zplug "shenwei356/csvtk", from:gh-r, \
+    as:command
+
 # Rehash GNU utils as default
 # zplug "plugins/gnu-utils", from:oh-my-zsh, as:plugin, nice:9, hook-load:"__gnu_utils"
 
