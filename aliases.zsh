@@ -21,3 +21,14 @@ if hash mvim>/dev/null 2>&1; then
     alias vim='mvim -v'
 fi
 
+
+# Additional commands
+#
+function use_conda() {
+    typeset -gU path
+    if [[ -d "${HOME}/anaconda/bin" ]]; then
+        path=("${HOME}/anaconda/bin" $path)
+    fi
+    export path
+}
+
