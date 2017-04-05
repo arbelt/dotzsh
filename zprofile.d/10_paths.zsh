@@ -13,6 +13,7 @@ path=(
     "$HOME/bin"
     "$HOME/.cabal/bin"
     "$HOME/.cask/bin"
+    "$HOME/.cargo/bin"
     # "$HOME/.evm/bin"
     "$HOME/scripts"
     "/Applications/git-annex.app/Contents/MacOS"
@@ -25,3 +26,4 @@ path=(
 # path=($^path(N))
 
 export path
+

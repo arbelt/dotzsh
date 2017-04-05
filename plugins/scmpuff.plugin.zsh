@@ -1,8 +1,5 @@
 
-_scmpuff_installed() {
-    hash scmpuff >/dev/null 2>&1
-}
-
-if _scmpuff_installed; then
-    eval "$(scmpuff init - )"
+if (($+commands[scmpuff])); then
+    eval "$(scmpuff init --aliases=false -s)"
+    alias gs='scmpuff_status'
 fi
