@@ -33,5 +33,6 @@ function use_conda() {
 }
 
 if [[ -x "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ]]; then
-    alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+    alias subl='"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"'
 fi
+
