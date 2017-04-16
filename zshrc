@@ -37,6 +37,9 @@ zplug "junegunn/fzf", use:"shell/*.zsh", defer:3, if:"(( $+commands[fzf] ))", as
 zplug "shenwei356/csvtk", from:gh-r, \
     as:command
 
+# zplug "lukasmartinelli/pgclimb", from:gh-r, \
+    # as:command
+
 # Rehash GNU utils as default
 # zplug "plugins/gnu-utils", from:oh-my-zsh, as:plugin, nice:9, hook-load:"__gnu_utils"
 
@@ -45,7 +48,7 @@ zplug "shenwei356/csvtk", from:gh-r, \
 
 zplug "sindresorhus/pure", defer:3
 
-zplug "arbelt/dotzsh", use:'plugins/*.zsh', as:plugin, defer:3
+zplug "arbelt/dotzsh", use:'plugins/{yenv,scmpuff}.plugin.zsh', as:plugin, defer:3
 zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, defer:3
 # zplug "~/.dotfiles/zsh/aliases.zsh", from:local, nice:19
 # zplug "~/.fzf.zsh", from:local, defer:3, if:"[ -s ~/.fzf.zsh ]", lazy:false
@@ -66,6 +69,15 @@ zplug load
 if (($+commands[gr])); then
     unalias gr
     . <(gr completion)
+fi
+
+if (($+commands[yarn])); then
+    export PATH="$PATH:$(yarn global bin)"
+fi
+
+GDAL2_BIN_PATH="/usr/local/opt/gdal2/bin"
+if [[ -d "$GDAL2_BIN_PATH" ]]; then
+    export PATH="$GDAL2_BIN_PATH:$PATH"
 fi
 
 return 0
