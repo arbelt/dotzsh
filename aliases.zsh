@@ -37,5 +37,5 @@ if [[ -x "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ]]; th
 fi
 
 VSCODE_BIN="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
-[[ -x "${VSCODE_BIN}" ]] && alias code="${VSCODE_BIN}"
+[[ -x "${VSCODE_BIN}" ]] && alias code="\"${VSCODE_BIN}\""
 
