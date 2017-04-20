@@ -73,6 +73,7 @@ fi
 
 if (($+commands[yarn])); then
     export PATH="$PATH:$(yarn global bin)"
+    export PATH="$PATH:${HOME}/.config/yarn/global/node_modules/.bin"
 fi
 
 GDAL2_BIN_PATH="/usr/local/opt/gdal2/bin"
@@ -82,3 +83,4 @@ fi
 
 return 0
 
+eval $(/usr/libexec/path_helper -s)
