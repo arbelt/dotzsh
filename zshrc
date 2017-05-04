@@ -7,6 +7,10 @@ setopt extendedglob
 export ZPLUG_HOME="${HOME}/.zplug"
 source "${ZPLUG_HOME}/init.zsh"
 
+if [[ -s "${HOME}/.zshrc.local" ]]; then
+    source "${HOME}/.zshrc.local"
+fi
+
 export ZSH="${ZPLUG_HOME}/repos/robbyrussell/oh-my-zsh"
 
 # Set ZSH_CACHE_DIR to the path where cache files should be created
@@ -48,7 +52,6 @@ zplug "shenwei356/csvtk", from:gh-r, \
 
 zplug "sindresorhus/pure", defer:3
 
-DISABLE_PYENV=1
 zplug "arbelt/dotzsh", use:'plugins/{yenv,scmpuff}.plugin.zsh', as:plugin, defer:3
 zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, defer:3
 # zplug "~/.dotfiles/zsh/aliases.zsh", from:local, nice:19
