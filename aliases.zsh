@@ -32,6 +32,11 @@ function use_conda() {
     export path
 }
 
+function unset_pyenv() {
+    typeset -gU path
+    export path=("${(@)path:#${HOME}\/.pyenv\/shims}")
+}
+
 if [[ -x "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ]]; then
     alias subl='"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"'
 fi
