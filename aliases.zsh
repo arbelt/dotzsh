@@ -44,3 +44,5 @@ fi
 VSCODE_BIN="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 [[ -x "${VSCODE_BIN}" ]] && alias code="\"${VSCODE_BIN}\""
 
+return 0
+
