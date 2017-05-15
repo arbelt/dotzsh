@@ -7,6 +7,8 @@ setopt extendedglob
 export ZPLUG_HOME="${HOME}/.zplug"
 source "${ZPLUG_HOME}/init.zsh"
 
+zplugs=()
+
 if [[ -s "${HOME}/.zshrc.local" ]]; then
     source "${HOME}/.zshrc.local"
 fi

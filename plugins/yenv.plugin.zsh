@@ -74,9 +74,10 @@ _setup_yenv() {
     async_register_callback yenv_worker _evaluator_callback
     async_job yenv_worker _find_nodenv
     async_job yenv_worker _find_rbenv
-    if [[ -z "${DISABLE_PYENV}" ]]; then 
+    if [[ -z "${DISABLE_PYENV}" ]]; then
         async_job yenv_worker _find_pyenv
     fi
 }
 
 _setup_yenv "$@"
+
