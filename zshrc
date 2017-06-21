@@ -90,3 +90,5 @@ fi
 return 0
 
 eval $(/usr/libexec/path_helper -s)
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
