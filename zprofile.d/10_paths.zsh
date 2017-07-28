@@ -11,6 +11,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
     # "/Applications/LibreOffice.app/Contents/MacOS"
     "$HOME/bin"
+    "$HOME/.local/bin"
     "$HOME/.cabal/bin"
     "$HOME/.cask/bin"
     "$HOME/.cargo/bin"
