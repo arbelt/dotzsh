@@ -19,6 +19,7 @@ path=(
     "$HOME/scripts"
     "/Applications/git-annex.app/Contents/MacOS"
     # "/Applications/Racket v6.0/bin"
+    "${ORACLE_HOME}"
     "/opt/stata12"
     /usr/local/{bin,sbin}
     $path
