@@ -36,7 +36,7 @@ _find_pyenv() {
     [[ -d "${PYENV_ROOT}"/bin ]] && PATH="${PYENV_ROOT}":$PATH \
         && echo "export PATH=${PYENV_ROOT}/bin:\${PATH}"
     if _pyenv_virtualenv_installed; then
-        echo "$(pyenv init - zsh)"
+        echo "$(pyenv init --no-rehash - zsh)"
         # function pyenv_prompt_info() {
         #     echo "$(pyenv version-name)"
         # }
