@@ -58,7 +58,7 @@ _find_rbenv() {
 
     hash rbenv &>/dev/null || return 0
 
-    echo "$(rbenv init - zsh)"
+    echo "$(rbenv init --no-rehash - zsh)"
 
     # function rbenv_prompt_info() {
     #     echo "$(rbenv version-name)"
@@ -66,7 +66,7 @@ _find_rbenv() {
 }
 
 _find_nodenv() {
-    hash nodenv &>/dev/null && echo "$(nodenv init - zsh)"
+    hash nodenv &>/dev/null && echo "$(nodenv init --no-rehash - zsh)"
 }
 
 _setup_yenv() {

@@ -24,11 +24,11 @@ fi
 # zplug "zplug/zplug", at:"2.1.0"
 # zplug "zplug/zplug", at:"master"
 # zplug "zplug/zplug"
-zplug "mafredri/zsh-async", at:v1.3.1, as:plugin, defer:2, \
+zplug "mafredri/zsh-async", at:v1.5.1, as:plugin, defer:1, \
     frozen:1
 
 # zplug "robbyrussell/oh-my-zsh", use:"oh-my-zsh.zsh", defer:2
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:2, ignore:"oh-my-zsh.zsh"
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:2
 zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", defer:2
 zplug "plugins/osx", from:oh-my-zsh, defer:2
 zplug "plugins/fasd", from:oh-my-zsh, defer:2, \
@@ -38,7 +38,7 @@ zplug "plugins/docker-compose", from:oh-my-zsh, defer:2, \
     if:"(( $+commands[docker-compose] ))"
 zplug "plugins/gitignore", from:oh-my-zsh, defer:2
 zplug "junegunn/fzf", use:"shell/*.zsh", defer:3, if:"(( $+commands[fzf] ))", as:plugin, lazy:false
-# zplug "zsh-users/zsh-completions", as:plugin, defer:2
+zplug "zsh-users/zsh-completions", as:plugin, defer:2
 
 zplug "shenwei356/csvtk", from:gh-r, \
     as:command
