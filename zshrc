@@ -24,8 +24,7 @@ fi
 # zplug "zplug/zplug", at:"2.1.0"
 # zplug "zplug/zplug", at:"master"
 # zplug "zplug/zplug"
-zplug "mafredri/zsh-async", at:v1.5.1, as:plugin, defer:1, \
-    frozen:1
+zplug "mafredri/zsh-async", at:v1.5.1, as:plugin, defer:1
 
 # zplug "robbyrussell/oh-my-zsh", use:"oh-my-zsh.zsh", defer:2
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:2
