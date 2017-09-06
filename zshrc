@@ -53,7 +53,7 @@ zplug "shenwei356/csvtk", from:gh-r, \
 
 zplug "sindresorhus/pure", defer:3
 
-zplug "arbelt/dotzsh", use:'plugins/{scmpuff}.plugin.zsh', as:plugin, defer:3
+zplug "arbelt/dotzsh", use:'plugins/scmpuff.plugin.zsh', as:plugin, defer:3
 zplug "arbelt/dotzsh", use:'aliases.zsh', as:plugin, defer:3
 # zplug "~/.dotfiles/zsh/aliases.zsh", from:local, nice:19
 # zplug "~/.fzf.zsh", from:local, defer:3, if:"[ -s ~/.fzf.zsh ]", lazy:false
