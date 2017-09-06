@@ -44,5 +44,24 @@ fi
 VSCODE_BIN="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 [[ -x "${VSCODE_BIN}" ]] && alias code="\"${VSCODE_BIN}\""
 
+# Lazy loading
+#
+function pyenv() {
+    eval "$(command pyenv init --no-rehash - zsh)"
+    pyenv "$@"
+}
+
+function rbenv() {
+    eval "$(command rbenv init --no-rehash - zsh)"
+    rbenv "$@"
+}
+
+function nodenv() {
+    eval "$(command nodenv init --no-rehash - zsh)"
+    nodenv "$@"
+}
+
+
+
 return 0
 
