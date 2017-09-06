@@ -47,7 +47,10 @@ VSCODE_BIN="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code
 # Lazy loading
 #
 function pyenv() {
-    eval "$(command pyenv init --no-rehash - zsh)"
+    (( $+commands[pyenv] )) && \
+        eval "$(command pyenv init --no-rehash - zsh)"
+    (( $+commands[pyenv-virtualenv] )) && \
+        eval "$(command pyenv-virtualenv-init - zsh)"
     pyenv "$@"
 }
 
